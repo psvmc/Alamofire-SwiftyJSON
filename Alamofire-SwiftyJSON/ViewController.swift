@@ -23,9 +23,8 @@ class ViewController: UIViewController {
     
  
     @IBAction func queryData(_ sender: AnyObject) {
-        Alamofire.request("https://httpbin.org/get").responseSwiftyJSON { (request, response, json, error) in
+        Alamofire.request("https://httpbin.org/get",method:.get,parameters: ["foo": "bar"]).responseSwiftyJSON { (request, response, json, error) in
             if(error == nil){
-                print(json.stringValue);
                 self.mTextView.text = "URL:\(json["url"].stringValue)\n来源IP:\(json["origin"].stringValue)\nUser-Agent:\(json["headers"]["User-Agent"].stringValue)";
             }else{
                 self.mTextView.text = error.debugDescription;

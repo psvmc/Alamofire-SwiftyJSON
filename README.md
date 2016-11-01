@@ -4,8 +4,8 @@ Easy way to use both [Alamofire](https://github.com/Alamofire/Alamofire) and [Sw
 
 ## Requirements
 
-- iOS 8.0+ / Mac OS X 10.9+
-- Xcode 7.0
+- iOS 9.0+
+- Xcode 8.1
 
 ## Install
 
@@ -14,12 +14,11 @@ Easy way to use both [Alamofire](https://github.com/Alamofire/Alamofire) and [Sw
 ## Usage
 
 ```swift
-import Alamofire
-       
-request(Method.GET, "http://httpbin.org/get", parameters: ["foo": "bar"])
-.responseSwiftyJSON({ request, response, data, error in
-
-    
-})
-
+Alamofire.request("https://httpbin.org/get",method:.get,parameters: ["foo": "bar"]).responseSwiftyJSON { (request, response, json, error) in
+    if(error == nil){
+        self.mTextView.text = "URL:\(json["url"].stringValue)\n来源IP:\(json["origin"].stringValue)\nUser-Agent:\(json["headers"]["User-Agent"].stringValue)";
+    }else{
+        self.mTextView.text = error.debugDescription;
+    }
+}
 ```
