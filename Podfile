@@ -4,6 +4,6 @@ use_frameworks!
 
 
 target 'Alamofire-SwiftyJSON' do
-    pod 'Alamofire', '~> 4.0'
-    pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+    pod 'Alamofire', '~> 4.5'
+	pod 'SwiftyJSON'
 end

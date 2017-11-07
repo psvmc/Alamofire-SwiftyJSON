@@ -18,7 +18,7 @@ extension DataRequest {
             if(stringResponse.result.isFailure){
                 responseJSON = JSON.null
             } else {
-                responseJSON = JSON.parse(stringResponse.result.value!)
+                responseJSON = JSON.init(parseJSON: stringResponse.result.value!)
             }
             (queue ?? DispatchQueue.main).async {
                 completionHandler(stringResponse.request!, stringResponse.response, responseJSON, stringResponse.result.error)
